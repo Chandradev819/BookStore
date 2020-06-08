@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200506030805_AddSubSubCategoryToDb.cs" />
+    <Compile Remove="Migrations\20200506030805_AddSubSubCategoryToDb.Designer.cs" />
+    <Compile Remove="Migrations\20200506031322_AddSubSubCategoryToDb.cs" />
+    <Compile Remove="Migrations\20200506031322_AddSubSubCategoryToDb.Designer.cs" />
+    <Compile Remove="Migrations\20200506031643_AddSubSubCategoryToDb.cs" />
+    <Compile Remove="Migrations\20200506031643_AddSubSubCategoryToDb.Designer.cs" />
+    <Compile Remove="Migrations\20200506032129_AddSubSubCategoryToDb.cs" />
+    <Compile Remove="Migrations\20200506032129_AddSubSubCategoryToDb.Designer.cs" />
+    <Compile Remove="Migrations\20200506041328_AddProductsToDb.cs" />
+    <Compile Remove="Migrations\20200506041328_AddProductsToDb.Designer.cs" />
+    <Compile Remove="Migrations\20200506042232_AddsubcatToDb.cs" />
+    <Compile Remove="Migrations\20200506042232_AddsubcatToDb.Designer.cs" />
+    <Compile Remove="Migrations\20200506043621_AddProductsToDb.cs" />
+    <Compile Remove="Migrations\20200506043621_AddProductsToDb.Designer.cs" />
+    <Compile Remove="Migrations\20200506045610_AddDbToSubSubCategory.cs" />
+    <Compile Remove="Migrations\20200506045610_AddDbToSubSubCategory.Designer.cs" />
+    <Compile Remove="Migrations\20200506074620_AddDbToSubSubCategory.cs" />
+    <Compile Remove="Migrations\20200506074620_AddDbToSubSubCategory.Designer.cs" />
+    <Compile Remove="Migrations\20200506081408_AddDbToSubSub.cs" />
+    <Compile Remove="Migrations\20200506081408_AddDbToSubSub.Designer.cs" />
+    <Compile Remove="Migrations\20200506081728_AddDbToSubSub.cs" />
+    <Compile Remove="Migrations\20200506081728_AddDbToSubSub.Designer.cs" />
+    <Compile Remove="Migrations\20200506082401_SageDb.cs" />
+    <Compile Remove="Migrations\20200506082401_SageDb.Designer.cs" />
+    <Compile Remove="Migrations\20200507051408_AddSubSubToDb.cs" />
+    <Compile Remove="Migrations\20200507051408_AddSubSubToDb.Designer.cs" />
+    <Compile Remove="Migrations\20200507051500_AddProductSubSubToDb.cs" />
+    <Compile Remove="Migrations\20200507051500_AddProductSubSubToDb.Designer.cs" />
+    <Compile Remove="Migrations\20200507051818_AddProductSubSubToDb.cs" />
+    <Compile Remove="Migrations\20200507051818_AddProductSubSubToDb.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.35" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BulkyBook.Models\BulkyBook.Models.csproj" />
+    <ProjectReference Include="..\BulkyBook.Utility\BulkyBook.Utility.csproj" />
+  </ItemGroup>
+
+</Project>

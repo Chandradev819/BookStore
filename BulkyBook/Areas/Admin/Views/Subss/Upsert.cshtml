@@ -1,0 +1,85 @@
+﻿@model BulkyBook.Models.ViewModels.SubSubVM
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var title = "Create Product";
+}
+
+
+<form method="post">
+    <div class="row p-3 border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @if (Model.Subss.Id != 0)
+        {
+            //edit
+            title = "Edit Product";
+            <input type="hidden" asp-for="Subss.Id" />
+        }
+        <div class="col-12 border-bottom">
+            <h2 class="text-primary">@title</h2>
+        </div>
+        <div class="col-8 pt-4">
+
+            <div class="form-group row">
+                <div class="col-4">
+                    Category
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m => m.Subss.CategoryId, Model.Categorylist, "-Select a Category",
+                   new { @class = "form-control" })
+                    <span asp-validation-for="Subss.CategoryId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    Category
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m => m.Subss.SubCategoryId, Model.SubCategorylist, "-Select a Category",
+                   new { @class = "form-control" })
+                    <span asp-validation-for="Subss.SubCategoryId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Subss.Name"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Subss.Name" class="form-control" />
+                    <span asp-validation-for="Subss.Name" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-8 offset-4">
+                    @if (Model.Subss.Id != 0)
+                    {
+                        <partial name="_EditAndBackToListButton" model="Model.Subss.Id" />
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" onclick="return validateInput()" class="btn btn-primary form-control">Create</button>
+                            </div>
+                            <div class="col">
+                                <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdn.tiny.cloud/1/n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp/tinymce/5/tinymce.min.js"></script>
+
+
+
+}
