@@ -101,28 +101,26 @@ namespace BulkyBook.Areas.Admin.Controllers
                         var uploads = Path.Combine(webRootPath, @"images\products");
                         var extenstion = Path.GetExtension(files[0].FileName);
 
-                        //if (productVM.ProductImg.Count>0)
-                        //{
-                        //    //this is an edit and we need to remove old image
-                        //    var imagePath = Path.Combine(webRootPath, productVM.Product.ImageUrl.TrimStart('\\'));
-                        //    if (System.IO.File.Exists(imagePath))
-                        //    {
-                        //        System.IO.File.Delete(imagePath);
-                        //    }
-                        //}
+                        if (productVM.Product.ImgDetails.Count > 0)
+                        {
+                            //this is an edit and we need to remove old image
+                            var imagePath = Path.Combine(webRootPath, productVM.Product.ImageUrl.TrimStart('\\'));
+                            if (System.IO.File.Exists(imagePath))
+                            {
+                                System.IO.File.Delete(imagePath);
+                            }
+                        }
                         using (var filesStreams = new FileStream(Path.Combine(uploads, fileName + extenstion), FileMode.Create))
                         {
                             files[0].CopyTo(filesStreams);
                         }
-                        //Need to be pass pk of Product
                         ProductImg prodImg=new ProductImg()
                             {
-                               ImageUrl= @"\images\products\" + fileName + extenstion,
-                               ProdId=123 
+                               ImageUrl= @"\images\products\" + fileName + extenstion
                             };
                        prodImgs.Add(prodImg);
                     }
-                    productVM.ProductImg = prodImgs;
+                    productVM.Product.ImgDetails = prodImgs;
                 }
                 else
                 {
