@@ -94,24 +94,35 @@ namespace BulkyBook.Areas.Admin.Controllers
                 var files = HttpContext.Request.Form.Files;
                 if (files.Count > 0)
                 {
-                    string fileName = Guid.NewGuid().ToString();
-                    var uploads = Path.Combine(webRootPath, @"images\products");
-                    var extenstion = Path.GetExtension(files[0].FileName);
+                    List<ProductImg> prodImgs = new List<ProductImg>();
+                    for (int i = 0; i < files.Count; i++)
+                    {
+                        string fileName = Guid.NewGuid().ToString();
+                        var uploads = Path.Combine(webRootPath, @"images\products");
+                        var extenstion = Path.GetExtension(files[0].FileName);
 
-                    if (productVM.Product.ImageUrl != null)
-                    {
-                        //this is an edit and we need to remove old image
-                        var imagePath = Path.Combine(webRootPath, productVM.Product.ImageUrl.TrimStart('\\'));
-                        if (System.IO.File.Exists(imagePath))
+                        //if (productVM.ProductImg.Count>0)
+                        //{
+                        //    //this is an edit and we need to remove old image
+                        //    var imagePath = Path.Combine(webRootPath, productVM.Product.ImageUrl.TrimStart('\\'));
+                        //    if (System.IO.File.Exists(imagePath))
+                        //    {
+                        //        System.IO.File.Delete(imagePath);
+                        //    }
+                        //}
+                        using (var filesStreams = new FileStream(Path.Combine(uploads, fileName + extenstion), FileMode.Create))
                         {
-                            System.IO.File.Delete(imagePath);
+                            files[0].CopyTo(filesStreams);
                         }
+                        //Need to be pass pk of Product
+                        ProductImg prodImg=new ProductImg()
+                            {
+                               ImageUrl= @"\images\products\" + fileName + extenstion,
+                               ProdId=123 
+                            };
+                       prodImgs.Add(prodImg);
                     }
-                    using (var filesStreams = new FileStream(Path.Combine(uploads, fileName + extenstion), FileMode.Create))
-                    {
-                        files[0].CopyTo(filesStreams);
-                    }
-                    productVM.Product.ImageUrl = @"\images\products\" + fileName + extenstion;
+                    productVM.ProductImg = prodImgs;
                 }
                 else
                 {
