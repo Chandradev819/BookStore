@@ -10,7 +10,9 @@ namespace BulkyBook.Models
 
         public string ImageUrl { get; set; }
 
+        public int ProdId { get; set; }
         [ForeignKey("ProdId")]
+       
         public virtual Product Product { get; set; }
 
     }
