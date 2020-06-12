@@ -2,10 +2,7 @@
 using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace BulkyBook.DataAccess.Repository
 {
@@ -20,18 +17,18 @@ namespace BulkyBook.DataAccess.Repository
 
         public Product GetProductWithImgOnId(int Id)
         {
-          var query= _db.Products.Where(m=>m.Id==Id)
-                .Include("Category")
-                .Include("SubCategory")
-                .Include("Subss")
-                .Include(m => m.ImgDetails).FirstOrDefault();
+            var query = _db.Products.Where(m => m.Id == Id)
+                  .Include("Category")
+                  .Include("SubCategory")
+                  .Include("Subss")
+                  .Include(m => m.ImgDetails).FirstOrDefault();
             return (Product)query;
         }
 
         public void Update(Product product)
         {
             var objFromDb = _db.Products.Where(s => s.Id == product.Id)
-                .Include(s=>s.ImgDetails).FirstOrDefault();
+                .Include(s => s.ImgDetails).FirstOrDefault();
             if (objFromDb != null)
             {
                 if (product.ImageUrl != null)

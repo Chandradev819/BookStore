@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace BulkyBook.DataAccess.Repository.IRepository
 {
-    public interface IRepository<T> where T :class
+    public interface IRepository<T> where T : class
     {
         T Get(int id);
         IEnumerable<T> GetAll(
@@ -24,7 +23,7 @@ namespace BulkyBook.DataAccess.Repository.IRepository
         void Remove(int id);
         void Remove(T entity);
         void RemoveRange(IEnumerable<T> entity);
-        
+
 
     }
 }

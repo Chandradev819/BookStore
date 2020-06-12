@@ -79,7 +79,18 @@
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />
     <script src="https://cdn.tiny.cloud/1/n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp/tinymce/5/tinymce.min.js"></script>
+    <script>
+        $("#Subss_CategoryId").change(function () {
+            $.getJSON("/Admin/Product/GetSubCategory", { catId: $("#Subss_CategoryId").val() }, function (d) {
+                var row = "";
+                row = "<option value=" + "0" + ">" + "Select SubCategory" + "</option>"
+                $("#Subss_SubCategoryId").empty();
+                $.each(d, function (i, v) {
+                    row += "<option value=" + v.value + ">" + v.text + "</option>";
+                });
 
-
-
+                $("#Subss_SubCategoryId").html(row);
+            })
+        })
+    </script>
 }
