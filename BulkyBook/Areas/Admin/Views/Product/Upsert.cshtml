@@ -9,9 +9,9 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         @if (Model.Product.Id != 0)
         {
-        //edit
-        title = "Edit Product";
-        <input type="hidden" asp-for="Product.Id" />
+            //edit
+            title = "Edit Product";
+            <input type="hidden" asp-for="Product.Id" />
         }
         <div class="col-12 border-bottom">
             <h2 class="text-primary">@title</h2>
@@ -115,17 +115,17 @@
 
                     @if (Model.Product.Id != 0)
                     {
-                    @Html.DropDownListFor(m => m.Product.SubCategoryId, Model.SubCategoryList, "-Select a Category",
-                    new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.Product.SubCategoryId, Model.SubCategoryList, "-Select a Category",
+                        new { @class = "form-control" })
                     }
                     @if (Model.Product.Id == 0)
                     {
-                    @Html.DropDownListFor(m => m.Product.SubCategoryId, new List<SelectListItem>
-                        (), "-Select a Category",
-                        new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.Product.SubCategoryId, new List<SelectListItem>
+                            (), "-Select a Category",
+                            new { @class = "form-control" })
                     }
 
-                        <span asp-validation-for="Product.SubCategoryId" class="text-danger"></span>
+                    <span asp-validation-for="Product.SubCategoryId" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row">
@@ -135,17 +135,17 @@
                 <div class="col-8">
                     @if (Model.Product.Id != 0)
                     {
-                    @Html.DropDownListFor(m => m.Product.SubSubId, Model.SubssList, "-Select a Category",
-                    new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.Product.SubSubId, Model.SubssList, "-Select a Category",
+                        new { @class = "form-control" })
                     }
                     @if (Model.Product.Id == 0)
                     {
-                    @Html.DropDownListFor(m => m.Product.SubSubId, new List<SelectListItem>
-                        (), "-Select a Category",
-                        new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.Product.SubSubId, new List<SelectListItem>
+                            (), "-Select a Category",
+                            new { @class = "form-control" })
 
-                        }
-                        <span asp-validation-for="Product.SubSubId" class="text-danger"></span>
+                    }
+                    <span asp-validation-for="Product.SubSubId" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row">
@@ -160,38 +160,38 @@
                 <div class="col-8 offset-4">
                     @if (Model.Product.Id != 0)
                     {
-                    <partial name="_EditAndBackToListButton" model="Model.Product.Id" />
+                        <partial name="_EditAndBackToListButton" model="Model.Product.Id" />
                     }
                     else
                     {
-                    <div class="row">
-                        <div class="col">
-                            <button type="submit" onclick="return validateInput()" class="btn btn-primary form-control">Create</button>
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" onclick="return validateInput()" class="btn btn-primary form-control">Create</button>
+                            </div>
+                            <div class="col">
+                                <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                            </div>
                         </div>
-                        <div class="col">
-                            <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
-                        </div>
-                    </div>
                     }
                 </div>
             </div>
         </div>
         @if (Model.Product.Id != 0)
         {
-        <div class="col-3 offset-1 pt-4">
-            @foreach (var item in Model.Product.ImgDetails)
-            {
-                <img src="@item" width="100" height="100" style="border-radius:5px; border:1px solid #bbb9b9" />
-            }
-        </div>
+            <div class="col-3 offset-1 pt-4">
+                @foreach (var item in Model.Product.ImgDetails)
+                {
+                    <img src="@item.ImageUrl" width="250" height="200" style="border-radius:5px; border:1px solid #bbb9b9" /> <br /> <br />
+                }
+            </div>
         }
     </div>
 </form>
 
 @section Scripts{
-<partial name="_ValidationScriptsPartial" />
-<script src="https://cdn.tiny.cloud/1/n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp/tinymce/5/tinymce.min.js"></script>
-<script>
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdn.tiny.cloud/1/n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp/tinymce/5/tinymce.min.js"></script>
+    <script>
 
         tinymce.init({
             selector: 'textarea',
@@ -208,7 +208,7 @@
             return true;
         };
 
-</script>
+    </script>
 
-<script src="~/js/CascadingDropdown.js"></script>
+    <script src="~/js/CascadingDropdown.js"></script>
 }
