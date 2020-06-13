@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BulkyBook.DataAccess.Repository.IRepository;
+﻿using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.Models;
 using BulkyBook.Models.ViewModels;
-using BulkyBook.Utility;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Linq;
 
 namespace BulkyBook.Areas.Admin.Controllers
 {
@@ -55,14 +50,14 @@ namespace BulkyBook.Areas.Admin.Controllers
                 return View(subSubVM);
             }
             //this is for edit
-           
+
             subSubVM.Subss = _unitOfWork.Subss.Get(id.GetValueOrDefault());
             if (subSubVM.Subss == null)
             {
                 return NotFound();
             }
             return View(subSubVM);
-            
+
         }
 
         [HttpPost]

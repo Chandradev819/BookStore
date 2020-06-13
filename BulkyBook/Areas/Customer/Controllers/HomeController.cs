@@ -72,12 +72,9 @@ namespace BulkyBook.Areas.Customer.Controllers
                 if(cartFromDb== null)
                 {
                     _unitOfWork.ShoppingCart.Add(CartObject);
-                         
                 }
-
                 else
                 {
-
                     cartFromDb.Count += CartObject.Count;
                     _unitOfWork.ShoppingCart.Update(cartFromDb);
                 }
@@ -98,9 +95,7 @@ namespace BulkyBook.Areas.Customer.Controllers
                     ProductId = productFromDb.Id
                 };
                 return View(cartObj);
-
             }
-           
         }
         public IActionResult Privacy()
         {
